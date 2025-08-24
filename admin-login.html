@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-indigo-50 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full mx-4">
+        <!-- Back to Portfolio Button -->
+        <div class="text-center mb-6">
+            <a href="index.html" class="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors duration-200">
+                <i class="fas fa-arrow-left mr-2"></i>
+                Back to Portfolio
+            </a>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+            <div class="text-center mb-8">
+                <div class="w-20 h-20 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h1 class="text-3xl font-bold text-gray-900">Admin Login</h1>
+                <p class="text-gray-600 mt-2">Access your portfolio management panel</p>
+            </div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="space-y-6">
+                <div>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-user mr-2"></i>Username
+                    </label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        class="form-input w-full" 
+                        placeholder="Enter your username"
+                        required
+                    >
+                </div>
+
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        <i class="fas fa-lock mr-2"></i>Password
+                    </label>
+                    <div class="relative">
+                        <input 
+                            type="password" 
+                            id="password" 
+                            name="password" 
+                            class="form-input w-full pr-12" 
+                            placeholder="Enter your password"
+                            required
+                        >
+                        <button 
+                            type="button" 
+                            id="toggle-password" 
+                            class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                        >
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="remember" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                        <span class="ml-2 text-sm text-gray-600">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm text-blue-600 hover:text-blue-700">Forgot password?</a>
+                </div>
+
+                <button 
+                    type="submit" 
+                    id="login-btn" 
+                    class="btn-primary w-full flex items-center justify-center"
+                >
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    <span id="login-text">Login to Admin Panel</span>
+                </button>
+            </form>
+
+            <!-- Demo Credentials -->
+            <div class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h3 class="text-sm font-semibold text-blue-800 mb-2">Demo Credentials:</h3>
+                <div class="text-xs text-blue-700 space-y-1">
+                    <p><strong>Username:</strong> admin</p>
+                    <p><strong>Password:</strong> portfolio123</p>
+                </div>
+                <p class="text-xs text-blue-600 mt-2 italic">You can change these credentials in the admin-script.js file</p>
+            </div>
+
+            <!-- Security Notice -->
+            <div class="mt-6 text-center">
+                <p class="text-xs text-gray-500">
+                    <i class="fas fa-shield-alt mr-1"></i>
+                    Secure admin access for portfolio management
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Error/Success Notification -->
+    <div id="notification" class="fixed top-4 right-4 z-50 px-6 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 hidden">
+        <div class="flex items-center">
+            <i id="notification-icon" class="mr-3"></i>
+            <span id="notification-message"></span>
+        </div>
+    </div>
+
+    <script src="admin-login.js"></script>
+</body>
+</html>

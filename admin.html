@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Admin Panel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body class="bg-gray-100">
+    <!-- Admin Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold text-gray-900">Portfolio Admin Panel</h1>
+                    <span class="px-3 py-1 bg-blue-100 text-blue-800 text-sm font-medium rounded-full">Admin</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="preview-btn" class="btn-secondary">
+                        <i class="fas fa-eye mr-2"></i>
+                        Preview Website
+                    </button>
+                    <button id="save-all-btn" class="btn-primary">
+                        <i class="fas fa-save mr-2"></i>
+                        Save All Changes
+                    </button>
+                    <button id="test-btn" class="btn-secondary text-green-600 border-green-600 hover:bg-green-600 hover:text-white">
+                        <i class="fas fa-check mr-2"></i>
+                        Test Functions
+                    </button>
+                    <button id="logout-btn" class="btn-secondary text-red-600 border-red-600 hover:bg-red-600 hover:text-white">
+                        <i class="fas fa-sign-out-alt mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex h-screen bg-gray-100">
+        <!-- Sidebar Navigation -->
+        <nav class="w-64 bg-white shadow-sm">
+            <div class="p-4">
+                <h2 class="text-lg font-semibold text-gray-700 mb-4">Sections</h2>
+                <ul class="space-y-2">
+                    <li>
+                        <button class="nav-tab active" data-section="hero">
+                            <i class="fas fa-home mr-3"></i>
+                            Hero Section
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab" data-section="about">
+                            <i class="fas fa-user mr-3"></i>
+                            About Me
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab" data-section="education">
+                            <i class="fas fa-graduation-cap mr-3"></i>
+                            Education
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab" data-section="skills">
+                            <i class="fas fa-code mr-3"></i>
+                            Skills
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab" data-section="projects">
+                            <i class="fas fa-project-diagram mr-3"></i>
+                            Projects
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab" data-section="contact">
+                            <i class="fas fa-envelope mr-3"></i>
+                            Contact
+                        </button>
+                    </li>
+                    <li>
+                        <button class="nav-tab" data-section="settings">
+                            <i class="fas fa-cog mr-3"></i>
+                            Settings
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 overflow-y-auto">
+            <!-- Hero Section Editor -->
+            <div id="hero" class="content-section active">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Hero Section</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                                <input type="text" id="hero-name" class="form-input" value="Abubakar Bhutta">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Subtitle</label>
+                                <input type="text" id="hero-subtitle" class="form-input" value="Software Engineering Student at University of Gujrat">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Profile Initials</label>
+                                <input type="text" id="hero-initials" class="form-input" value="AB" maxlength="2">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Primary Button Text</label>
+                                <input type="text" id="hero-primary-btn" class="form-input" value="View My Work">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Secondary Button Text</label>
+                                <input type="text" id="hero-secondary-btn" class="form-input" value="Get In Touch">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Preview</h3>
+                            <div class="text-center">
+                                <div class="w-24 h-24 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
+                                    <span id="preview-initials">AB</span>
+                                </div>
+                                <h1 class="text-2xl font-bold text-gray-900 mb-2" id="preview-name">Abubakar Bhutta</h1>
+                                <p class="text-gray-600 mb-4" id="preview-subtitle">Software Engineering Student at University of Gujrat</p>
+                                <div class="flex flex-col gap-2">
+                                    <button class="btn-primary text-sm py-2" id="preview-primary-btn">View My Work</button>
+                                    <button class="btn-secondary text-sm py-2" id="preview-secondary-btn">Get In Touch</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Me Editor -->
+            <div id="about" class="content-section hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">About Me Section</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">About Me Text</label>
+                                <textarea id="about-text" rows="6" class="form-input">I am from Sialkot, Pakistan. Currently pursuing Software Engineering at the University of Gujrat. I am in my 3rd semester with a CGPA of 3.52/4. Passionate about web development and building modern applications.</textarea>
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Preview</h3>
+                            <div class="bg-white p-4 rounded-lg">
+                                <p class="text-gray-700" id="preview-about-text">I am from Sialkot, Pakistan. Currently pursuing Software Engineering at the University of Gujrat. I am in my 3rd semester with a CGPA of 3.52/4. Passionate about web development and building modern applications.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Education Editor -->
+            <div id="education" class="content-section hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Education Section</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Degree</label>
+                                <input type="text" id="education-degree" class="form-input" value="BS Software Engineering">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">University</label>
+                                <input type="text" id="education-university" class="form-input" value="University of Gujrat">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Semester</label>
+                                <input type="text" id="education-semester" class="form-input" value="3rd">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">CGPA</label>
+                                <input type="text" id="education-cgpa" class="form-input" value="3.52/4">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Preview</h3>
+                            <div class="bg-white p-4 rounded-lg">
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <h3 class="text-lg font-bold text-gray-900 mb-2" id="preview-degree">BS Software Engineering</h3>
+                                        <p class="text-gray-600" id="preview-university">University of Gujrat</p>
+                                        <p class="text-gray-500" id="preview-semester">3rd Semester</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="inline-block bg-blue-100 rounded-full px-4 py-2">
+                                            <span class="text-lg font-bold text-blue-600" id="preview-cgpa">3.52/4</span>
+                                            <p class="text-sm text-blue-600">CGPA</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Editor -->
+            <div id="skills" class="content-section hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Skills Section</h2>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-700">Current Skills</h3>
+                            <button id="add-skill-btn" class="btn-primary">
+                                <i class="fas fa-plus mr-2"></i>
+                                Add New Skill
+                            </button>
+                        </div>
+                        <div id="skills-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <!-- Skills will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Editor -->
+            <div id="projects" class="content-section hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Projects Section</h2>
+                    <div class="space-y-6">
+                        <div class="flex justify-between items-center">
+                            <h3 class="text-lg font-semibold text-gray-700">Current Projects</h3>
+                            <button id="add-project-btn" class="btn-primary">
+                                <i class="fas fa-plus mr-2"></i>
+                                Add New Project
+                            </button>
+                        </div>
+                        <div id="projects-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                            <!-- Projects will be populated here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Editor -->
+            <div id="contact" class="content-section hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Contact Section</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
+                                <input type="email" id="contact-email" class="form-input" value="abubakar.ict@gmail.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Location</label>
+                                <input type="text" id="contact-location" class="form-input" value="Sialkot, Pakistan">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Form Title</label>
+                                <input type="text" id="contact-form-title" class="form-input" value="Get In Touch">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Preview</h3>
+                            <div class="bg-white p-4 rounded-lg">
+                                <div class="space-y-3">
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-envelope text-blue-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm">Email</p>
+                                            <p class="text-gray-600 text-sm" id="preview-contact-email">abubakar.ict@gmail.com</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center space-x-3">
+                                        <div class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                            <i class="fas fa-map-marker-alt text-blue-600 text-sm"></i>
+                                        </div>
+                                        <div>
+                                            <p class="font-semibold text-sm">Location</p>
+                                            <p class="text-gray-600 text-sm" id="preview-contact-location">Sialkot, Pakistan</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Editor -->
+            <div id="settings" class="content-section hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">Website Settings</h2>
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Website Title</label>
+                                <input type="text" id="site-title" class="form-input" value="Abubakar Bhutta - Software Engineering Student">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Primary Color</label>
+                                <input type="color" id="primary-color" class="form-input h-12" value="#2563eb">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Secondary Color</label>
+                                <input type="color" id="secondary-color" class="form-input h-12" value="#1e40af">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Background Color</label>
+                                <input type="color" id="bg-color" class="form-input h-12" value="#f9fafb">
+                            </div>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-3">Color Preview</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded" id="preview-primary-color"></div>
+                                    <span class="text-sm text-gray-600">Primary Color</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded" id="preview-secondary-color"></div>
+                                    <span class="text-sm text-gray-600">Secondary Color</span>
+                                </div>
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-8 h-8 rounded" id="preview-bg-color"></div>
+                                    <span class="text-sm text-gray-600">Background Color</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Skill Modal -->
+    <div id="skill-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-lg font-semibold">Add New Skill</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Skill Name</label>
+                        <input type="text" id="new-skill-name" class="form-input" placeholder="e.g., React">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Icon Class</label>
+                        <select id="new-skill-icon" class="form-input">
+                            <option value="fab fa-html5">HTML5</option>
+                            <option value="fab fa-css3-alt">CSS3</option>
+                            <option value="fab fa-js-square">JavaScript</option>
+                            <option value="fas fa-code">Code</option>
+                            <option value="fab fa-python">Python</option>
+                            <option value="fab fa-git-alt">Git</option>
+                            <option value="fab fa-react">React</option>
+                            <option value="fab fa-node-js">Node.js</option>
+                            <option value="fab fa-angular">Angular</option>
+                            <option value="fab fa-vuejs">Vue.js</option>
+                            <option value="fab fa-php">PHP</option>
+                            <option value="fab fa-java">Java</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Icon Color</label>
+                        <input type="color" id="new-skill-color" class="form-input h-10" value="#3b82f6">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary modal-cancel">Cancel</button>
+                <button class="btn-primary" id="save-skill-btn">Add Skill</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Project Modal -->
+    <div id="project-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="text-lg font-semibold">Add New Project</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Project Title</label>
+                        <input type="text" id="new-project-title" class="form-input" placeholder="e.g., E-Commerce Platform">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Description</label>
+                        <textarea id="new-project-description" rows="3" class="form-input" placeholder="Project description..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Icon</label>
+                        <select id="new-project-icon" class="form-input">
+                            <option value="fas fa-laptop-code">Laptop Code</option>
+                            <option value="fas fa-mobile-alt">Mobile</option>
+                            <option value="fas fa-chart-line">Chart</option>
+                            <option value="fas fa-shopping-cart">Shopping Cart</option>
+                            <option value="fas fa-gamepad">Game</option>
+                            <option value="fas fa-database">Database</option>
+                            <option value="fas fa-robot">Robot</option>
+                            <option value="fas fa-cloud">Cloud</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Gradient Colors</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <input type="color" id="new-project-color1" class="form-input h-10" value="#3b82f6">
+                            <input type="color" id="new-project-color2" class="form-input h-10" value="#1e40af">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Technologies (comma-separated)</label>
+                        <input type="text" id="new-project-tech" class="form-input" placeholder="e.g., React, Node.js, MongoDB">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary modal-cancel">Cancel</button>
+                <button class="btn-primary" id="save-project-btn">Add Project</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin-script.js"></script>
+    
+    <style>
+        /* Admin Panel Essential Styles */
+        .btn-primary {
+            @apply inline-flex items-center px-4 py-2 bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:bg-blue-700 transform hover:scale-105 transition-all duration-200 ease-in-out;
+        }
+        
+        .btn-secondary {
+            @apply inline-flex items-center px-4 py-2 bg-white text-blue-600 font-medium rounded-lg border border-blue-600 shadow-sm hover:bg-blue-50 transform hover:scale-105 transition-all duration-200 ease-in-out;
+        }
+        
+        .btn-danger {
+            @apply inline-flex items-center px-3 py-1 bg-red-600 text-white text-sm font-medium rounded-lg hover:bg-red-700 transition-colors duration-200;
+        }
+        
+        .form-input {
+            @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+        }
+        
+        .nav-tab {
+            @apply w-full text-left px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 rounded-lg transition-all duration-200 flex items-center;
+        }
+        
+        .nav-tab.active {
+            @apply bg-blue-100 text-blue-700 font-medium;
+        }
+        
+        .content-section {
+            @apply transition-all duration-300 ease-in-out;
+        }
+        
+        .content-section.hidden {
+            @apply hidden;
+        }
+        
+        .content-section.active {
+            @apply block;
+        }
+        
+        .modal {
+            @apply fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 transition-opacity duration-300;
+        }
+        
+        .modal.hidden {
+            @apply opacity-0 pointer-events-none;
+        }
+        
+        .modal-content {
+            @apply bg-white rounded-lg shadow-xl max-w-md w-full mx-4 max-h-[90vh] overflow-y-auto;
+        }
+        
+        .modal-header {
+            @apply flex justify-between items-center p-6 border-b border-gray-200;
+        }
+        
+        .modal-close {
+            @apply text-gray-400 hover:text-gray-600 text-2xl font-bold cursor-pointer transition-colors duration-200;
+        }
+        
+        .modal-body {
+            @apply p-6;
+        }
+        
+        .modal-footer {
+            @apply flex justify-end space-x-3 p-6 border-t border-gray-200;
+        }
+        
+        .skill-card-admin {
+            @apply bg-white p-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200;
+        }
+        
+        .project-card-admin {
+            @apply bg-white p-4 rounded-lg border border-gray-200 shadow-sm hover:shadow-md transition-all duration-200;
+        }
+        
+        .tech-tag {
+            @apply px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full;
+        }
+        
+        .notification {
+            @apply fixed top-4 right-4 z-50 px-4 py-3 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300;
+        }
+        
+        .notification.success {
+            @apply bg-green-500 text-white;
+        }
+        
+        .notification.error {
+            @apply bg-red-500 text-white;
+        }
+        
+        .notification.info {
+            @apply bg-blue-500 text-white;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</body>
+</html>
